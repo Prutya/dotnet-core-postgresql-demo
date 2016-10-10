@@ -1,6 +1,6 @@
 # .NET Core Npgsql demo
 ## Prerequisites
-You should have [.NET Core](https://www.microsoft.com/net/core) and [PostgresSQL](https://www.postgresql.org) installed.
+You should have [.NET Core](https://www.microsoft.com/net/core) and [PostgreSQL](https://www.postgresql.org) installed.
 ## Create database
 ```
 $ createdb dotnet_postgres_test
