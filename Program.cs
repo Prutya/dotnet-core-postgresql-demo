@@ -60,7 +60,7 @@ namespace PostgresTest
         }
       }
 
-      students.ForEach(s => Console.WriteLine(s));
+      students.ForEach(s => Console.WriteLine(s.ToJson()));
     }
   }
 }
