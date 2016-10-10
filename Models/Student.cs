@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace PostgresTest.Models
 {
   public class Student
@@ -8,7 +10,7 @@ namespace PostgresTest.Models
 
     public override string ToString()
     {
-      return $"{Name}: {Email}";
+      return JsonConvert.SerializeObject(this);
     }
   }
 }
