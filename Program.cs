@@ -11,10 +11,10 @@ namespace PostgresTest
     private const string _connectionString = "Host=localhost;Database=dotnet_postgres_test";
     private const string _studentsTableName = "students";
 
-    private static readonly string _createStudentsCommand    = File.ReadAllText("./Sql/create_students.sql");
-    private static readonly string _countStudentsCommand     = File.ReadAllText("./Sql/count_students.sql");
-    private static readonly string _seedStudentsCommand      = File.ReadAllText("./Sql/seed_students.sql");
-    private static readonly string _selectAllStudentsCommand = File.ReadAllText("./Sql/select_all_students.sql");
+    private static readonly string _createStudentsCommand    = File.ReadAllText("./Sql/Students/create_table.sql");
+    private static readonly string _countStudentsCommand     = File.ReadAllText("./Sql/Students/count.sql");
+    private static readonly string _seedStudentsCommand      = File.ReadAllText("./Sql/Students/seed.sql");
+    private static readonly string _selectAllStudentsCommand = File.ReadAllText("./Sql/Students/select_all.sql");
 
     public static void Main(string[] args)
     {
