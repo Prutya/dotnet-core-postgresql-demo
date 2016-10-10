@@ -10,11 +10,12 @@ namespace PostgresTest
   {
     private const string _connectionString = "Host=localhost;Database=dotnet_postgres_test";
     private const string _studentsTableName = "students";
+    private const string _getAllJohnsProcedureName = "all_johns";
 
-    private static readonly string _createStudentsCommand    = File.ReadAllText("./Sql/create_students.sql");
-    private static readonly string _countStudentsCommand     = File.ReadAllText("./Sql/count_students.sql");
-    private static readonly string _seedStudentsCommand      = File.ReadAllText("./Sql/seed_students.sql");
-    private static readonly string _selectAllStudentsCommand = File.ReadAllText("./Sql/select_all_students.sql");
+    private static readonly string _createStudentsCommand          = File.ReadAllText("./Sql/create_students.sql");
+    private static readonly string _countStudentsCommand           = File.ReadAllText("./Sql/count_students.sql");
+    private static readonly string _seedStudentsCommand            = File.ReadAllText("./Sql/seed_students.sql");
+    private static readonly string _selectAllStudentsCommand       = File.ReadAllText("./Sql/select_all_students.sql");
 
     public static void Main(string[] args)
     {
@@ -43,6 +44,7 @@ namespace PostgresTest
             command.ExecuteNonQuery();
           }
 
+          // Select all students from database
           command.CommandText = _selectAllStudentsCommand;
           using (NpgsqlDataReader reader = command.ExecuteReader())
           {
@@ -50,8 +52,9 @@ namespace PostgresTest
             {
               students.Add(new Student
               {
-                Name = reader["name"].ToString(),
-                Email = reader["email"].ToString()
+                Id    = (long)   reader["id"],
+                Name  = (string) reader["name"],
+                Email = (string) reader["email"]
               });
             }
           }
