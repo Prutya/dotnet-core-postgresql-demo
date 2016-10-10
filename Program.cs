@@ -51,9 +51,10 @@ namespace PostgresTest
             {
               students.Add(new Student
               {
-                Id    = (long)   reader["id"],
-                Name  = (string) reader["name"],
-                Email = (string) reader["email"]
+                Id         = (long)   reader["id"],
+                FirstName  = (string) reader["first_name"],
+                LastName   = (string) reader["last_name"],
+                Email      = (string) reader["email"]
               });
             }
           }
