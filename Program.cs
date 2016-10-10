@@ -11,10 +11,12 @@ namespace PostgresTest
     private const string _connectionString = "Host=localhost;Database=dotnet_postgres_test";
     private const string _studentsTableName = "students";
 
-    private static readonly string _createStudentsCommand    = File.ReadAllText("./Sql/Students/create_table.sql");
-    private static readonly string _countStudentsCommand     = File.ReadAllText("./Sql/Students/count.sql");
-    private static readonly string _seedStudentsCommand      = File.ReadAllText("./Sql/Students/seed.sql");
+    private static readonly string _createStudentsCommand = File.ReadAllText("./Sql/Students/create_table.sql");
+    private static readonly string _countStudentsCommand = File.ReadAllText("./Sql/Students/count.sql");
+    private static readonly string _seedStudentsCommand = File.ReadAllText("./Sql/Students/seed.sql");
     private static readonly string _selectAllStudentsCommand = File.ReadAllText("./Sql/Students/select_all.sql");
+    private static readonly string _createFunctionListAllStudentsNamedJohnCommand = File.ReadAllText("./Sql/Students/create_function_list_all_users_named_john.sql");
+    private static readonly string _callFunctionListAllStudentsNamedJohnCommand = File.ReadAllText("./Sql/Students/call_list_all_students_named_john_function.sql");
 
     public static void Main(string[] args)
     {
@@ -43,8 +45,12 @@ namespace PostgresTest
             command.ExecuteNonQuery();
           }
 
-          // Select all students from database
-          command.CommandText = _selectAllStudentsCommand;
+          // Create server function which gets all students with name 'John'
+          command.CommandText = _createFunctionListAllStudentsNamedJohnCommand;
+          command.ExecuteNonQuery();
+
+          // Select all students with name 'John' from database using stored function
+          command.CommandText = _callFunctionListAllStudentsNamedJohnCommand;
           using (NpgsqlDataReader reader = command.ExecuteReader())
           {
             while (reader.Read())
