@@ -17,3 +17,9 @@ CREATE DATABASE dotnet_postgres_test;
 $ dotnet restore
 $ dotnet run
 ```
+## Expected Result
+```json
+{"FirstName":"John","LastName":"Doe","Email":"john.doe@example.com","Id":1}
+{"FirstName":"John","LastName":"Shepard","Email":"john.shepard@example.com","Id":2}
+{"FirstName":"John","LastName":"Snow","Email":"john.snow@example.com","Id":3}
+```
