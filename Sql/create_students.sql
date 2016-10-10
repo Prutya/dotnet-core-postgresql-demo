@@ -1,4 +1,5 @@
 CREATE TABLE IF NOT EXISTS students(
-  name   varchar(500),
-  email  varchar(256)
+  id     integer      PRIMARY KEY,
+  name   varchar(500) NOT NULL,
+  email  varchar(256) NOT NULL UNIQUE
 );
